@@ -1,0 +1,18 @@
+.title {
+  color: rgb(201, 171, 250);
+}
+
+.item {
+  margin-bottom: 8px;
+  color: rgb(201, 171, 250);
+}
+
+.span_content {
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.link {
+  text-decoration: none;
+}
