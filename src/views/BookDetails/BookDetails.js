@@ -1,13 +1,31 @@
-import React, { Fragment, useEffect, useState } from "react";
-import { NavLink, Route, useParams, useRouteMatch } from "react-router-dom";
+import React, { Fragment, useEffect, useState, lazy, Suspense } from "react";
+import {
+  NavLink,
+  Route,
+  useHistory,
+  useLocation,
+  useParams,
+  useRouteMatch,
+} from "react-router-dom";
 import { fetchMovieDetails } from "../../helpers/api";
 import style from "./BookDetails.module.css";
-import ActorsView from "../ActorView/ActorsView";
-import Reviews from "../Reviews/Reviews";
+// import ActorsView from "../ActorView/ActorsView";
+// import Reviews from "../Reviews/Reviews";
+const ActorsView = lazy(() =>
+  import(`../ActorView/ActorsView` /*webpackChunkName: "ActorsView"*/)
+);
+
+const Reviews = lazy(() =>
+  import(`../Reviews/Reviews` /*webpackChunkName: "CastView "*/)
+);
 
 const BookDeatils = () => {
   const { movieId } = useParams();
   const { path, url } = useRouteMatch();
+  const history = useHistory();
+  const location = useLocation();
+  // console.log('history',history)
+  // console.log('location',location)
   const [state, setState] = useState(null);
   useEffect(() => {
     (async () => {
@@ -19,8 +37,13 @@ const BookDeatils = () => {
       }
     })();
   }, [movieId]);
+
+  const onGoBack = () => {
+    history.push(location?.state?.from ?? "/");
+  };
   return (
     <Fragment>
+      {location.pathname !== "/" && <button onClick={onGoBack}>back</button>}
       {state && (
         <div className={style.CardContainer}>
           <div className={style.CardView}>
@@ -70,13 +93,14 @@ const BookDeatils = () => {
           </div>
         </div>
       )}
-
-      <Route path={`${path}/cast`}>
-        <ActorsView />
-      </Route>
-      <Route path={`${path}/review`}>
-        <Reviews/>
-      </Route>
+      <Suspense fallback={<h1>Загружаємо</h1>}>
+        <Route path={`${path}/cast`}>
+          <ActorsView />
+        </Route>
+        <Route path={`${path}/review`}>
+          <Reviews />
+        </Route>
+      </Suspense>
     </Fragment>
   );
 };
