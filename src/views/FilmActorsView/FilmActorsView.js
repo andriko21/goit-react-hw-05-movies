@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchByActors } from "../../helpers/api";
-import style from "./ActorsView.module.css";
+import style from "./FilmActorsView.module.css";
 
 const ActorsView = () => {
   const [state, setState] = useState(null);

@@ -15,7 +15,7 @@ code {
 
 @import url("./Components/Navigation/Navigation.module.css");
 @import url("./Components/Container/Container.module.css");
-@import url("./views/BookDetails/BookDetails.module.css");
-@import url("./views/ActorView/ActorsView.module.css");
+@import url("./views/FilmDetails/FilmDetails.module.css");
+@import url("./views/FilmActorsView/FilmActorsView.module.css");
 @import url("./views/Reviews/Reviews.module.css");
 @import url("./views/MoviesView/MoviesViev.module.css");

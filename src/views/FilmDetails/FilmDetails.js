@@ -8,11 +8,11 @@ import {
   useRouteMatch,
 } from "react-router-dom";
 import { fetchMovieDetails } from "../../helpers/api";
-import style from "./BookDetails.module.css";
+import style from "./FilmDetails.module.css";
 // import ActorsView from "../ActorView/ActorsView";
 // import Reviews from "../Reviews/Reviews";
 const ActorsView = lazy(() =>
-  import(`../ActorView/ActorsView` /*webpackChunkName: "ActorsView"*/)
+  import(`../FilmActorsView/FilmActorsView` /*webpackChunkName: "ActorsView"*/)
 );
 
 const Reviews = lazy(() =>

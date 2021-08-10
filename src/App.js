@@ -2,7 +2,7 @@ import Navigation from "./Components/Navigation/Navigation";
 import { Switch, Route } from "react-router-dom";
 import Container from "./Components/Container/Container.js";
 import Home from "./views/Home/Home";
-import BookDetails from "./views/BookDetails/BookDetails"
+import FilmDetails from "./views/FilmDetails/FilmDetails"
 import MoviesView from "./views/MoviesView/MoviesViev"
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
           <h1>Фільмачки</h1>
           <MoviesView/>
         </Route>
-        <Route path="/movie/:movieId"><BookDetails/></Route>
+        <Route path="/movie/:movieId"><FilmDetails/></Route>
       </Switch>
     </Container>
   );
